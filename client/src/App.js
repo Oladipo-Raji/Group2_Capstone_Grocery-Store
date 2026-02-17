@@ -4,6 +4,7 @@ import FeaturedProducts from "./components/FeaturedProducts";
 import TopSelling from "./components/TopSelling";
 import ShopByCategory from "./components/ShopByCategory";
 import PromoBanner from "./components/PromoBanner";
+import Footer from "./components/footer";
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
       <TopSelling />
       <ShopByCategory />
       <PromoBanner />
+      <Footer />
     </>
   );
 }
