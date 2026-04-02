@@ -1,49 +1,38 @@
-import React from "react";
-import ProductCard from "./ProductCard";
-import "../styles/product.css";
-
-const products = [
-  {
-    id: 1,
-    name: "Fresh Organic Broccoli",
-    price: 4.99,
-    image:
-      "https://images.unsplash.com/photo-1582515073490-dc0167c4d6f7"
-  },
-  {
-    id: 2,
-    name: "Sweet Red Cherry",
-    price: 7.99,
-    image:
-      "https://images.unsplash.com/photo-1559181567-c3190ca9959b"
-  },
-  {
-    id: 3,
-    name: "Seedless Watermelon",
-    price: 5.99,
-    image:
-      "https://images.unsplash.com/photo-1563114773-84221bd62daa"
-  },
-  {
-    id: 4,
-    name: "Pure Honey",
-    price: 5.49,
-    image:
-      "https://images.unsplash.com/photo-1587049352851-8d4e89133924"
-  }
-];
+import { useEffect, useState } from "react";
+import axios from "axios";
+import "../styles/ProductSection.css";
 
 const FeaturedProducts = () => {
+  const [products, setProducts] = useState([]);
+
+  useEffect(() => {
+    axios
+      .get("http://localhost:5000/api/products/featured")
+      .then((res) => setProducts(res.data))
+      .catch((err) => console.error(err));
+  }, []);
+
   return (
-    <section className="featured">
-      <div className="featured-header">
+    <section className="section">
+      <div className="section-header">
         <h2>Featured Products</h2>
-        <span>More →</span>
+        <span className="more">More →</span>
       </div>
 
-      <div className="product-grid">
-        {products.map((item) => (
-          <ProductCard key={item.id} product={item} />
+      <div className="grid">
+        {products.map((product) => (
+          <div className="card" key={product._id}>
+            <div className="card-image">
+              <img src={product.image} alt={product.name} />
+            </div>
+
+            <div className="card-body">
+              <h3>{product.name}</h3>
+              <p className="price">${product.price}</p>
+            </div>
+
+            <button>Add to Cart</button>
+          </div>
         ))}
       </div>
     </section>

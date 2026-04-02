@@ -1,53 +1,42 @@
-import React from "react";
-import ProductCard from "./ProductCard";
-import "../styles/product.css";
+import { useEffect, useState } from "react";
+import axios from "axios";
+import "../styles/ProductSection.css";
 
-const topSellingProducts = [
-  {
-    id: 1,
-    name: "Fresh Avocado",
-    price: 3.99,
-    image:
-      "https://images.unsplash.com/photo-1580910051074-3eb694886505"
-  },
-  {
-    id: 2,
-    name: "Organic Bananas",
-    price: 2.49,
-    image:
-      "https://images.unsplash.com/photo-1574226516831-e1dff420e8f8"
-  },
-  {
-    id: 3,
-    name: "Fresh Milk",
-    price: 4.29,
-    image:
-      "https://images.unsplash.com/photo-1582719478250-c89cae4dc85b"
-  },
-  {
-    id: 4,
-    name: "Brown Eggs",
-    price: 5.99,
-    image:
-      "https://images.unsplash.com/photo-1518568740560-333139a27e72"
-  }
-];
+const TopSellingProducts = () => {
+  const [products, setProducts] = useState([]);
 
-const TopSelling = () => {
+  useEffect(() => {
+    axios
+      .get("http://localhost:5000/api/products/top-selling")
+      .then((res) => setProducts(res.data))
+      .catch((err) => console.error(err));
+  }, []);
+
   return (
-    <section className="featured">
-      <div className="featured-header">
+    <section className="section">
+      <div className="section-header">
         <h2>Top Selling Products</h2>
-        <span>More →</span>
+        <span className="more">More →</span>
       </div>
 
-      <div className="product-grid">
-        {topSellingProducts.map((product) => (
-          <ProductCard key={product.id} product={product} />
+      <div className="grid">
+        {products.map((product) => (
+          <div className="card" key={product._id}>
+            <div className="card-image">
+              <img src={product.image} alt={product.name} />
+            </div>
+
+            <div className="card-body">
+              <h3>{product.name}</h3>
+              <p className="price">${product.price}</p>
+            </div>
+
+            <button>Add to Cart</button>
+          </div>
         ))}
       </div>
     </section>
   );
 };
 
-export default TopSelling;
+export default TopSellingProducts;
