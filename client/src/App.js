@@ -1,20 +1,23 @@
 import Header from "./components/Header";
-import HeroBanner from "./components/HeroBanner";
-import FeaturedProducts from "./components/FeaturedProducts";
-import TopSelling from "./components/TopSelling";
-import ShopByCategory from "./components/ShopByCategory";
-import PromoBanner from "./components/PromoBanner";
+import Navbar from "./components/Navbar";
 import Footer from "./components/footer";
+import { Routes, Route } from "react-router-dom";
+import Home from "./pages/Home";
+import About from "./pages/About";
+import Products from "./pages/Product";
+import SignUp from "./pages/SignUp";
 
 function App() {
   return (
     <>
       <Header />
-      <HeroBanner />
-      <FeaturedProducts />
-      <TopSelling />
-      <ShopByCategory />
-      <PromoBanner />
+      <Navbar />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/products" element={<Products />} />
+        <Route path="/signup" element={<SignUp />} />
+        <Route path="/about" element={<About />} />
+      </Routes>
       <Footer />
     </>
   );
