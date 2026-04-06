@@ -19,6 +19,7 @@ const Header = () => {
           <span>🔔</span>
           <span>🛒</span>
           <button className="signin-btn">Sign In</button>
+          
         </div>
       </div>
     </header>
