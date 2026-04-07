@@ -8,10 +8,9 @@ import {
   FaCheckCircle,
 } from "react-icons/fa";
 
-import "./AboutUs.css";
-import AboutUs from "./pages/AboutUs";
+import "../styles/AboutUs.css";
 
-<AboutUs />
+
 
 export default function AboutUs() {
   const values = [
