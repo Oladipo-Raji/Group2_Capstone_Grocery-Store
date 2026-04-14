@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import "../styles/ProductSection.css";
+import AddToCartButton from "../components/AddToCartButton";
+import { Link } from "react-router-dom";
 
 const FeaturedProducts = () => {
   const [products, setProducts] = useState([]);
@@ -16,7 +18,9 @@ const FeaturedProducts = () => {
     <section className="section">
       <div className="section-header">
         <h2>Featured Products</h2>
-        <span className="more">More →</span>
+        <Link to="/products" className="more">
+          More →
+        </Link>
       </div>
 
       <div className="grid">
@@ -31,7 +35,7 @@ const FeaturedProducts = () => {
               <p className="price">${product.price}</p>
             </div>
 
-            <button>Add to Cart</button>
+            <AddToCartButton product={product} />
           </div>
         ))}
       </div>

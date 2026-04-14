@@ -1,0 +1,120 @@
+/* ===== PAGE ===== */
+.profile-page {
+  min-height: 100vh;
+  background: #f6f8f5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+/* ===== CARD ===== */
+.profile-card {
+  background: #fff;
+  width: 100%;
+  max-width: 450px;
+  padding: 30px;
+  border-radius: 16px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+  text-align: center;
+}
+
+/* ===== TITLE ===== */
+.profile-card h2 {
+  font-size: 26px;
+  margin-bottom: 10px;
+}
+
+.profile-card p {
+  font-size: 14px;
+  color: #666;
+}
+
+/* ===== INFO ===== */
+.profile-info {
+  margin-top: 20px;
+  text-align: left;
+}
+
+.profile-row {
+  background: #f9fafb;
+  padding: 12px 15px;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.profile-label {
+  font-weight: 600;
+  color: #444;
+}
+
+.profile-value {
+  color: #333;
+}
+
+/* ===== BUTTONS ===== */
+.profile-actions {
+  margin-top: 20px;
+  display: flex;
+  gap: 10px;
+}
+
+.profile-actions button,
+.profile-actions a {
+  flex: 1;
+  padding: 10px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+  text-align: center;
+  font-weight: 500;
+}
+
+/* Home button */
+.profile-actions a {
+  background: #eaeaea;
+  color: #333;
+}
+
+.profile-actions a:hover {
+  background: #ddd;
+}
+
+/* Logout button */
+.profile-actions button {
+  background: #4a7c59;
+  color: white;
+}
+
+.profile-actions button:hover {
+  background: #3b6548;
+}
+
+/* ===== NOT LOGGED IN ===== */
+.profile-empty {
+  text-align: center;
+}
+
+.profile-empty a {
+  margin-top: 10px;
+  display: inline-block;
+  background: #4a7c59;
+  color: white;
+  padding: 10px 16px;
+  border-radius: 8px;
+  text-decoration: none;
+}
+
+/* ===== MOBILE ===== */
+@media (max-width: 768px) {
+  .profile-card {
+    padding: 20px;
+  }
+
+  .profile-actions {
+    flex-direction: column;
+  }
+}

@@ -1,30 +1,51 @@
-// SignIn.jsx
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom'; // if using React Router, otherwise use <a>
-import './SignIn.css';
+import React, { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import axios from "axios";
+import "../styles/signup.css"; // reuse signup styles
 
 const SignIn = () => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [loading, setLoading] = useState(false); // optional: for future submit handling
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
 
-  const handleSubmit = (e) => {
+  const navigate = useNavigate();
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Add your auth logic here (Firebase, Supabase, your backend, etc.)
-    console.log('Sign in attempt:', { email, password });
-    setLoading(true);
-    // Simulate delay
-    setTimeout(() => setLoading(false), 1500);
+    setError("");
+
+    try {
+      setLoading(true);
+
+      const res = await axios.post("http://localhost:5000/api/auth/signin", {
+        email,
+        password,
+      });
+
+      // ✅ SAVE USER + TOKEN
+      localStorage.setItem("token", res.data.token);
+      localStorage.setItem("freshcartLoggedIn", "true");
+      localStorage.setItem("user", JSON.stringify(res.data.user));
+
+      // ✅ trigger header update
+      window.dispatchEvent(new Event("login"));
+
+      // ✅ redirect to home
+      navigate("/");
+    } catch (err) {
+      console.error(err.response);
+      setError(err.response?.data?.message || "Signin failed");
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
     <div className="signin-page">
       <div className="signin-card">
-        <div className="header">
-          <div className="logo">
-            <span className="cart-icon">🛒</span>
-            <h1>FreshCart</h1>
-          </div>
+        <div className="logo">
+          🛒 <h1>FreshCart</h1>
         </div>
 
         <h2>Welcome Back</h2>
@@ -32,50 +53,35 @@ const SignIn = () => {
 
         <form onSubmit={handleSubmit}>
           <div className="form-group">
-            <label htmlFor="email">Email Address</label>
             <input
               type="email"
-              id="email"
-              placeholder="you@example.com"
+              placeholder="Email address"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               required
             />
           </div>
 
-          <div className="form-group password-group">
-            <label htmlFor="password">Password</label>
+          <div className="form-group">
             <input
               type="password"
-              id="password"
-              placeholder="••••••••"
+              placeholder="Password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               required
             />
-            <a href="#forgot" className="forgot-link">
-              Forgot password?
-            </a>
           </div>
 
-          <button type="submit" className="signin-btn" disabled={loading}>
-            {loading ? 'Signing in...' : 'Sign In'}
+          {error && <p className="error">{error}</p>}
+
+          <button type="submit" disabled={loading}>
+            {loading ? "Signing in..." : "Sign In"}
           </button>
         </form>
 
         <p className="signup-link">
           Don't have an account? <Link to="/signup">Sign up</Link>
         </p>
-
-        <div className="demo-credentials">
-          <h4>Demo Credentials:</h4>
-          <p>
-            <strong>User:</strong> any email + <code>password123</code>
-          </p>
-          <p>
-            <strong>Admin:</strong> admin@freshcart.com + <code>admin123</code>
-          </p>
-        </div>
       </div>
     </div>
   );

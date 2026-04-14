@@ -1,78 +1,164 @@
 .header {
-  background-color: #5f7f63;
-  padding: 12px 20px;
+  background: #4a7c59;
+  padding: 12px 40px;
   color: white;
 }
 
+/* LAYOUT */
 .header-container {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 15px;
+  gap: 20px;
 }
 
-/* Logo */
+/* LOGO */
 .logo {
-  font-size: 20px;
+  color: white;
   font-weight: bold;
+  font-size: 18px;
+  text-decoration: none;
 }
 
-/* Search */
+/* SEARCH */
 .search-bar {
   flex: 1;
+  display: flex;
+  justify-content: center;
 }
 
 .search-bar input {
   width: 100%;
-  padding: 8px;
-  border-radius: 6px;
+  max-width: 500px;
+  padding: 10px 14px;
+  border-radius: 8px;
   border: none;
+  outline: none;
 }
 
-/* Icons */
+/* RIGHT SIDE */
 .header-icons {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 18px;
 }
 
-.signin-btn {
-  background: white;
-  color: #5f7f63;
-  border: none;
-  padding: 6px 12px;
-  border-radius: 5px;
+/* ICONS */
+.icon {
+  cursor: pointer;
+  font-size: 18px;
+}
+
+/* CART */
+.cart-btn {
+  position: relative;
+  text-decoration: none;
+  font-size: 18px;
+}
+
+.cart-badge {
+  position: absolute;
+  top: -6px;
+  right: -10px;
+  background: red;
+  color: white;
+  padding: 2px 6px;
+  border-radius: 50%;
+  font-size: 11px;
+}
+
+/* =========================
+   USER / AVATAR
+========================= */
+.user-menu {
+  position: relative;
   cursor: pointer;
 }
 
-/* ---------- MOBILE ---------- */
-@media (max-width: 768px) {
-
-  .header-container {
-    flex-wrap: wrap;
-  }
-
-  .location {
-    display: none;
-  }
-
-  .search-bar {
-    order: 3;
-    width: 100%;
-  }
-
-  .header-icons span {
-    display: none;
-  }
-
-  .signin-btn {
-    padding: 5px 10px;
-  }
+/* Avatar */
+.avatar {
+  width: 36px;
+  height: 36px;
+  background: white;
+  color: #4a7c59;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  transition: 0.3s;
 }
 
-/* ---------- SMALL MOBILE ---------- */
-@media (max-width: 480px) {
-  .logo {
-    font-size: 16px;
+.avatar:hover {
+  transform: scale(1.05);
+}
+
+/* DROPDOWN */
+.dropdown {
+  position: absolute;
+  top: 45px;
+  right: 0;
+  background: white;
+  color: black;
+  padding: 12px;
+  border-radius: 10px;
+  display: none;
+  flex-direction: column;
+  gap: 8px;
+  min-width: 160px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+  z-index: 100;
+}
+
+/* SHOW ON HOVER */
+.user-menu:hover .dropdown {
+  display: flex;
+}
+
+/* USER NAME */
+.dropdown p {
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+
+/* LINKS */
+.dropdown a {
+  text-decoration: none;
+  color: #333;
+  font-size: 14px;
+}
+
+.dropdown a:hover {
+  color: #4a7c59;
+}
+
+/* LOGOUT */
+.dropdown button {
+  border: none;
+  background: #f44336;
+  color: white;
+  padding: 6px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.dropdown button:hover {
+  background: #d32f2f;
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+@media (max-width: 768px) {
+  .header {
+    padding: 10px 16px;
+  }
+
+  .search-bar input {
+    max-width: 250px;
+  }
+
+  .header-icons {
+    gap: 10px;
   }
 }

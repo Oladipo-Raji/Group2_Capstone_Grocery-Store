@@ -30,14 +30,14 @@ export default function Navbar() {
         >
           About Us
         </NavLink>
-        <NavLink
+        {/* <NavLink
           to="/signup"
           className={({ isActive }) =>
             isActive ? "nav-link nav-link-active" : "nav-link"
           }
         >
           Sign Up
-        </NavLink>
+        </NavLink> */}
       </div>
     </nav>
   );

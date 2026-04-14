@@ -6,7 +6,10 @@
   justify-content: center;
   background: #f8f9fa;
   padding: 20px;
-  font-family: system-ui, -apple-system, sans-serif;
+  font-family:
+    system-ui,
+    -apple-system,
+    sans-serif;
 }
 
 .signin-card {

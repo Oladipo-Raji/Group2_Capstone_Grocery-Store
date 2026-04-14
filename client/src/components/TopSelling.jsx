@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
+import AddToCartButton from "../components/AddToCartButton";
 import "../styles/ProductSection.css";
 
 const TopSellingProducts = () => {
@@ -31,7 +32,7 @@ const TopSellingProducts = () => {
               <p className="price">${product.price}</p>
             </div>
 
-            <button>Add to Cart</button>
+            <AddToCartButton product={product} />
           </div>
         ))}
       </div>
