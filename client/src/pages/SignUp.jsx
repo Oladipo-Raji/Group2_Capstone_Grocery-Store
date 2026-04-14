@@ -46,7 +46,7 @@ export default function SignUp() {
           password: formData.password,
         });
 
-        // ✅ SAVE USER (IMPORTANT FOR HEADER)
+        //SAVE USER (IMPORTANT FOR HEADER)
         localStorage.setItem("token", res.data.token);
         localStorage.setItem("freshcartLoggedIn", "true");
         localStorage.setItem(
@@ -57,7 +57,7 @@ export default function SignUp() {
           }),
         );
 
-        navigate("/"); // ✅ go home
+        navigate("/"); // go home
         return;
       }
 

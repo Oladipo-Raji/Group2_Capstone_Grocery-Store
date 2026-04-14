@@ -108,21 +108,33 @@
 }
 
 .auth-submit-btn {
-  margin-top: 6px;
+  margin-top: 10px;
   border: none;
   border-radius: 10px;
-  background: #5f7f63;
+  background: #4a7c59;
   color: #fff;
-  padding: 12px;
+  padding: 13px;
   font-weight: 700;
   cursor: pointer;
-  transition: background-color 0.2s;
+  transition: all 0.25s ease;
 }
 
+/* hover */
 .auth-submit-btn:hover {
-  background: #48664c;
+  background: #3b6547;
+  transform: translateY(-1px);
 }
 
+/* active click */
+.auth-submit-btn:active {
+  transform: scale(0.98);
+}
+
+/* disabled */
+.auth-submit-btn:disabled {
+  background: #a5b8a8;
+  cursor: not-allowed;
+}
 .auth-switch-link {
   margin: 16px 0 2px;
   color: #5f7263;

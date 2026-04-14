@@ -23,15 +23,15 @@ const SignIn = () => {
         password,
       });
 
-      // ✅ SAVE USER + TOKEN
+      //SAVE USER + TOKEN
       localStorage.setItem("token", res.data.token);
       localStorage.setItem("freshcartLoggedIn", "true");
       localStorage.setItem("user", JSON.stringify(res.data.user));
 
-      // ✅ trigger header update
+      //trigger header update
       window.dispatchEvent(new Event("login"));
 
-      // ✅ redirect to home
+      //redirect to home
       navigate("/");
     } catch (err) {
       console.error(err.response);
@@ -74,7 +74,7 @@ const SignIn = () => {
 
           {error && <p className="error">{error}</p>}
 
-          <button type="submit" disabled={loading}>
+          <button type="submit" className="auth-submit-btn" disabled={loading}>
             {loading ? "Signing in..." : "Sign In"}
           </button>
         </form>

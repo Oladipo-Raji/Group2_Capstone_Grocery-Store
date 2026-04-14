@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import "../styles/header.css";
 import { cartItemCount } from "../utils/cartStorage";
 
+
 const Header = () => {
   const [cartCount, setCartCount] = useState(cartItemCount());
   const [user, setUser] = useState(null);
@@ -46,9 +47,9 @@ const Header = () => {
           🛒 FreshCart
         </Link>
 
-        <div className="search-bar">
+        {/* <div className="search-bar">
           <input type="text" placeholder="Search for products..." />
-        </div>
+        </div> */}
 
         <div className="header-icons">
           <span className="icon">❤️</span>

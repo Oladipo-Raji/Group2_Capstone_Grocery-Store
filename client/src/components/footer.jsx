@@ -1,32 +1,47 @@
+import { Link } from "react-router-dom";
 import { FaFacebookF, FaTwitter, FaInstagram, FaYoutube } from "react-icons/fa";
 import "../styles/footer.css";
 
 export default function Footer() {
   return (
     <footer className="footer">
-      
-      {/* TOP SECTION */}
+      {/* TOP */}
       <div className="footer-top">
-        
         {/* Column 1 */}
         <div className="footer-column">
           <h3>FreshCart</h3>
           <ul>
-            <li>About Us</li>
-            <li>Careers</li>
-            <li>Blog</li>
-            <li>Contact Us</li>
+            <li>
+              <Link to="/about">About Us</Link>
+            </li>
+            <li>
+              <Link to="/products">Products</Link>
+            </li>
+            <li>
+              <Link to="/login">Login</Link>
+            </li>
+            <li>
+              <Link to="/signup">Signup</Link>
+            </li>
           </ul>
         </div>
 
-        {/* Column 2 */}
+        {/* Column 2 (CATEGORIES) */}
         <div className="footer-column">
           <h3>Categories</h3>
           <ul>
-            <li>Vegetables</li>
-            <li>Fruits</li>
-            <li>Drinks</li>
-            <li>Dairy Products</li>
+            <li>
+              <Link to="/products?category=Vegetables">Vegetables</Link>
+            </li>
+            <li>
+              <Link to="/products?category=Fruits">Fruits</Link>
+            </li>
+            <li>
+              <Link to="/products?category=Beverages">Drinks</Link>
+            </li>
+            <li>
+              <Link to="/products?category=Dairy">Dairy Products</Link>
+            </li>
           </ul>
         </div>
 
@@ -34,10 +49,9 @@ export default function Footer() {
         <div className="footer-column">
           <h3>Useful Links</h3>
           <ul>
-            <li>Offers</li>
-            <li>My Account</li>
-            <li>FAQs</li>
-            <li>Support</li>
+            <li>
+              <Link to="/profile">My Account</Link>
+            </li>
           </ul>
         </div>
 
@@ -64,12 +78,11 @@ export default function Footer() {
             <button>Subscribe</button>
           </div>
         </div>
-
       </div>
 
       <hr />
 
-      {/* BOTTOM SECTION */}
+      {/* BOTTOM */}
       <div className="footer-bottom">
         <p>© 2026 FreshCart. All rights reserved.</p>
 
@@ -87,7 +100,6 @@ export default function Footer() {
           <span>PP</span>
         </div>
       </div>
-
     </footer>
   );
 }
